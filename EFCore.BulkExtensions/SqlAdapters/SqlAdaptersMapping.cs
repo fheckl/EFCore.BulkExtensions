@@ -26,6 +26,11 @@ public enum SqlType
     ///  Indicates database is MySQL
     /// </summary>
     MySql,
+
+    /// <summary>
+    ///  Indicates database is Oracle
+    /// </summary>
+    Oracle,
 }
 
 #pragma warning disable CS1591 // No XML comment required here
@@ -62,6 +67,10 @@ public static class SqlAdaptersMapping
             {
                 databaseType = SqlType.MySql;
             }
+            else if (ProviderName?.EndsWith(SqlType.Oracle.ToString(), ignoreCase) ?? false) // ProviderName: Pomelo.EntityFrameworkCore.MySql
+            {
+                databaseType = SqlType.Oracle;
+            }
             else if(ProviderName?.EndsWith(SqlType.Sqlite.ToString(), ignoreCase) ?? false) // ProviderName: Microsoft.EntityFrameworkCore.Sqlite
             {
                 databaseType = SqlType.Sqlite;
@@ -83,6 +92,10 @@ public static class SqlAdaptersMapping
                 else if (databaseType == SqlType.MySql)
                 {
                     dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".MySql.MySqlDbServer");
+                }
+                else if (databaseType == SqlType.Oracle)
+                {
+                    dbServerType = Type.GetType(namespaceSqlAdaptersTEXT + ".Oracle.OracleDbServer");
                 }
                 else if (databaseType == SqlType.Sqlite)
                 {

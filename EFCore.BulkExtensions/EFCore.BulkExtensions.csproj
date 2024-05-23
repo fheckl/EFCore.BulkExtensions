@@ -42,6 +42,7 @@
 	<PackageReference Include="NetTopologySuite.IO.SpatiaLite" Version="2.0.0" />
 	<PackageReference Include="MedallionTopologicalSort" Version="1.0.0" />
 	<PackageReference Include="StrongNamer" Version="0.2.5" />
+    <PackageReference Include="Oracle.EntityFrameworkCore" Version="8.21.121"/>
   </ItemGroup>
 
   <ItemGroup>

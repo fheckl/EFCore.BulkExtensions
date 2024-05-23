@@ -296,6 +296,7 @@ public static class ContextUtil
                 SqlType.Sqlite => new SqlAdapters.Sqlite.SqliteDbServer(),
                 SqlType.PostgreSql => new SqlAdapters.PostgreSql.PostgreSqlDbServer(),
                 SqlType.MySql => new SqlAdapters.MySql.MySqlDbServer(),
+                SqlType.Oracle => new SqlAdapters.Oracle.OracleDbServer(),
                 _ => throw new NotImplementedException(),
             };
         }

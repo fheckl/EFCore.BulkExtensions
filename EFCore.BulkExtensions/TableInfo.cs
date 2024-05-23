@@ -169,6 +169,7 @@ public class TableInfo
         bool isNpgsql = providerName?.EndsWith(SqlType.PostgreSql.ToString().ToLower()) ?? false;
         bool isSqlite = providerName?.EndsWith(SqlType.Sqlite.ToString().ToLower()) ?? false;
         bool isMySql = providerName?.EndsWith(SqlType.MySql.ToString().ToLower()) ?? false;
+        bool isOracle = providerName?.EndsWith(SqlType.Oracle.ToString().ToLower()) ?? false;
 
         string? defaultSchema = null;
         if (isSqlServer)
@@ -302,7 +303,7 @@ public class TableInfo
 
         HasJsonTypes = OwnedJsonTypesDict.Count() > 0;
 
-        if (isSqlServer || isNpgsql || isMySql)
+        if (isSqlServer || isNpgsql || isMySql || isOracle)
         {
             var strategyName = SqlAdaptersMapping.DbServer!.ValueGenerationStrategy;
             if (!strategyName.Contains(":Value"))
